@@ -8,7 +8,7 @@ dotenv.config();
 
 const router: Router = Router();
 
-router.post('/', async (req: Request, res: Response) => {
+async function emailHandler(req: Request, res: Response) {
     try {
         const transporter: Transporter<SMTPTransport.SentMessageInfo> = createTransport({
             host: 'smtp.gmail.com',
@@ -43,6 +43,14 @@ router.post('/', async (req: Request, res: Response) => {
     } catch (error) {
         res.status(401).json({ status: false, message: error.message, error: error });
     }
+}
+
+router.post('/', async (req: Request, res: Response) => {
+    await emailHandler(req, res);
+});
+
+router.options('/', async (req: Request, res: Response) => {
+    await emailHandler(req, res);
 });
 
 export = router;
