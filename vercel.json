@@ -1,0 +1,23 @@
+{
+    "builds": [
+        {
+            "src": "server/index.ts",
+            "use": "@vercel/node"
+        }
+    ],
+    "name": "kd-portal-services",
+    "routes": [
+        {
+            "dest": "server/index.ts",
+            "methods": [
+                "GET",
+                "POST",
+                "PUT",
+                "PATCH",
+                "DELETE"
+            ],
+            "src": "/(.*)"
+        }
+    ],
+    "version": 2
+}

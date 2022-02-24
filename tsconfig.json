@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "baseUrl": "server",
+        "esModuleInterop": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noImplicitAny": true,
+        "outDir": "dist",
+        "paths": {
+            "*": [
+                "node_modules/*"
+            ]
+        },
+        "skipLibCheck": true,
+        "sourceMap": false,
+        "strictNullChecks": false,
+        "target": "es6"
+    },
+    "include": [
+        "server/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
