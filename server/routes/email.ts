@@ -34,7 +34,7 @@ router.post('/', async (req: Request, res: Response) => {
                     <body>
                         <p><strong>Name:</strong> ${req.body.name}</p>
                         <p><strong>Email:</strong> ${req.body.email}</p>
-                        <p>${req.body.message}</p>
+                        <p><strong>Message:</strong> ${req.body.message}</p>
                     </body>
                 </html>`,
         };
