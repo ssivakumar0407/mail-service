@@ -2,7 +2,6 @@
 import dotenv from 'dotenv';
 import express, { Application, NextFunction, Request, Response } from 'express';
 import fs from 'fs';
-import { connectToDatabase } from './config/db.config';
 import apiRouter from './routes';
 
 export class MongoDBServer {
@@ -13,7 +12,6 @@ export class MongoDBServer {
         dotenv.config();
         this.port = (process.env.PORT || 3000) as number;
         this.config();
-        this.setup();
     }
 
     private config(): void {
@@ -37,10 +35,6 @@ export class MongoDBServer {
             html = html.replace('{{content}}', apiHtml);
             res.status(200).send(html);
         });
-    }
-
-    private async setup(): Promise<void> {
-        await connectToDatabase();
     }
 
     private getAPIRoutes(stacks: Record<string, any>[]): string {
