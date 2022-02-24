@@ -11,7 +11,9 @@ const router: Router = Router();
 router.post('/', async (req: Request, res: Response) => {
     try {
         const transporter: Transporter<SMTPTransport.SentMessageInfo> = createTransport({
-            service: 'gmail',
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true,
             auth: {
                 user: process.env.USER_EMAIL,
                 pass: process.env.USER_PASSWORD,
