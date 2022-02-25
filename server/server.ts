@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import dotenv from 'dotenv';
+import cors from 'cors';
 import express, { Application, NextFunction, Request, Response } from 'express';
 import fs from 'fs';
 import apiRouter from './routes';
@@ -16,6 +17,7 @@ export class MongoDBServer {
 
     private config(): void {
         this.server = express();
+        this.server.use(cors());
         this.server.use(express.json());
 
         this.server.use((req: Request, res: Response, next: NextFunction) => {
@@ -24,7 +26,7 @@ export class MongoDBServer {
             res.setHeader('Access-Control-Allow-Headers', 'Origin,X-Requested-With,Content-Type,Accept,Authorization');
             res.setHeader('Access-Control-Allow-Credentials', 'true');
             if ('OPTIONS' === req.method) {
-                res.sendStatus(200);
+                res.sendStatus(200).end();
             } else {
                 next();
             }
