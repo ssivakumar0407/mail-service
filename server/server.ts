@@ -25,11 +25,7 @@ export class MongoDBServer {
             res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
             res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
             res.setHeader('Access-Control-Allow-Credentials', 'true');
-            if ('OPTIONS' === req.method) {
-                res.sendStatus(200).end();
-            } else {
-                next();
-            }
+            next();
         });
 
         this.server.use(express.urlencoded({ limit: '30mb', extended: true }));
