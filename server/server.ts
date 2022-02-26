@@ -23,7 +23,7 @@ export class MongoDBServer {
         this.server.use((req: Request, res: Response, next: NextFunction) => {
             res.setHeader('Access-Control-Allow-Origin', '*');
             res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
-            res.setHeader('Access-Control-Allow-Headers', 'Origin,X-Requested-With,Content-Type,Accept,Authorization');
+            res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
             res.setHeader('Access-Control-Allow-Credentials', 'true');
             if ('OPTIONS' === req.method) {
                 res.sendStatus(200).end();
