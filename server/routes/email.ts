@@ -45,7 +45,23 @@ async function emailHandler(req: Request, res: Response) {
     }
 }
 
+router.get('/', (req: Request, res: Response) => {
+    res.status(200).json({ status: true, message: 'Email service working properly', error: null });
+});
+
 router.post('/', async (req: Request, res: Response) => {
+    await emailHandler(req, res);
+});
+
+router.put('/', async (req: Request, res: Response) => {
+    await emailHandler(req, res);
+});
+
+router.patch('/', async (req: Request, res: Response) => {
+    await emailHandler(req, res);
+});
+
+router.delete('/', async (req: Request, res: Response) => {
     await emailHandler(req, res);
 });
 
