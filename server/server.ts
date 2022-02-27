@@ -19,16 +19,16 @@ export class MongoDBServer {
         this.server = express();
         this.server.use(cors());
         this.server.use(express.json());
+        this.server.use(express.urlencoded({ limit: '30mb', extended: true }));
 
         this.server.use((req: Request, res: Response, next: NextFunction) => {
             res.setHeader('Access-Control-Allow-Origin', '*');
             res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
-            res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+            res.setHeader('Access-Control-Allow-Headers', '*');
             res.setHeader('Access-Control-Allow-Credentials', 'true');
             next();
         });
 
-        this.server.use(express.urlencoded({ limit: '30mb', extended: true }));
         this.server.use('/api', apiRouter);
 
         this.server.get('/', (req: Request, res: Response) => {
