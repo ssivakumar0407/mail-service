@@ -1,3 +1,4 @@
+import cors from 'cors';
 import { Request, Response, Router } from 'express';
 import { createTransport, Transporter } from 'nodemailer';
 import SMTPTransport from 'nodemailer/lib/smtp-transport';
@@ -45,27 +46,27 @@ async function emailHandler(req: Request, res: Response) {
     }
 }
 
-router.get('/', (req: Request, res: Response) => {
+router.get('/', cors(), (req: Request, res: Response) => {
     res.status(200).json({ status: true, message: 'Email service working properly', error: null });
 });
 
-router.post('/', async (req: Request, res: Response) => {
+router.post('/', cors(), async (req: Request, res: Response) => {
     await emailHandler(req, res);
 });
 
-router.put('/', async (req: Request, res: Response) => {
+router.put('/', cors(), async (req: Request, res: Response) => {
     await emailHandler(req, res);
 });
 
-router.patch('/', async (req: Request, res: Response) => {
+router.patch('/', cors(), async (req: Request, res: Response) => {
     await emailHandler(req, res);
 });
 
-router.delete('/', async (req: Request, res: Response) => {
+router.delete('/', cors(), async (req: Request, res: Response) => {
     await emailHandler(req, res);
 });
 
-router.options('/', async (req: Request, res: Response) => {
+router.options('/', cors(), async (req: Request, res: Response) => {
     await emailHandler(req, res);
 });
 
