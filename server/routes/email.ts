@@ -22,7 +22,7 @@ async function emailHandler(req: Request, res: Response) {
         });
         const mailOptions: Mail.Options = {
             from: process.env.USER_EMAIL,
-            to: 'ssivakumar0407@gmail.com',
+            to: 's.sivakumar2022@outlook.com',
             subject: `GitHub Profile: Received email from ${req.body.name}`,
             html: `<!DOCTYPE html>
                 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
