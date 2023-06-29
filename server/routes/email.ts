@@ -20,6 +20,18 @@ async function emailHandler(req: Request, res: Response) {
                 pass: process.env.USER_PASSWORD,
             },
         });
+        const mailAttachements: Mail.Attachment[] = [];
+        req.body.file.forEach((file: string, index: number) => {
+            const attachment: Mail.Attachment = {
+                content: file,
+                contentDisposition: 'attachment',
+                contentType: 'string',
+                encoding: 'base64',
+                contentTransferEncoding: 'quoted-printable',
+                filename: `Attachment${index}.pdf`,
+            };
+            mailAttachements.push(attachment);
+        });
         const mailOptions: Mail.Options = {
             from: process.env.USER_EMAIL,
             to: 'ssivakumar0407@gmail.com',
@@ -34,10 +46,12 @@ async function emailHandler(req: Request, res: Response) {
                     </head>
                     <body>
                         <p><strong>Name:</strong> ${req.body.name}</p>
+                        <p><strong>Contact:</strong> ${req.body.phone}</p>
                         <p><strong>Email:</strong> ${req.body.email}</p>
                         <p><strong>Message:</strong> ${req.body.message}</p>
                     </body>
                 </html>`,
+            attachments: mailAttachements,
         };
         await transporter.sendMail(mailOptions);
         res.status(200).json({ status: true, message: 'Email sent successfully', error: null });
