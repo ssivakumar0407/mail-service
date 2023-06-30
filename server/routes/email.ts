@@ -35,14 +35,14 @@ async function emailHandler(req: Request, res: Response) {
         const mailOptions: Mail.Options = {
             from: process.env.USER_EMAIL,
             to: 's.sivakumar2022@outlook.com',
-            subject: `GitHub Profile: Received email from ${req.body.name}`,
+            subject: `ProEdit Edge: New Careers Form Submit ${req.body.name}`,
             html: `<!DOCTYPE html>
                 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
                     <head>
                         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
                         <meta name="description" content="GitHub - Personal Portfolio" />
-                        <title>GitHub Profile: Received email from ${req.body.name}</title>
+                        <title>ProEdit Edge:Received email from ${req.body.name}</title>
                     </head>
                     <body>
                         <p><strong>Name:</strong> ${req.body.name}</p>
