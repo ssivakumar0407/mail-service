@@ -26,6 +26,11 @@ export class MongoDBServer {
             res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
             res.setHeader('Access-Control-Allow-Headers', '*');
             res.setHeader('Access-Control-Allow-Credentials', 'true');
+
+            if (req.method === 'OPTIONS') {
+                res.status(200).end();
+            }
+
             next();
         });
 
