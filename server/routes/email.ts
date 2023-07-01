@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import cors from 'cors';
 import { Request, Response, Router } from 'express';
 import { createTransport, Transporter } from 'nodemailer';
@@ -21,14 +22,10 @@ async function emailHandler(req: Request, res: Response) {
             },
         });
         const mailAttachements: Mail.Attachment[] = [];
-        req.body.file.forEach((file: string, index: number) => {
+        req.body.file.forEach((file: Record<string, any>) => {
             const attachment: Mail.Attachment = {
-                content: file,
-                contentDisposition: 'attachment',
-                contentType: 'string',
-                encoding: 'base64',
-                contentTransferEncoding: 'quoted-printable',
-                filename: `Attachment${index}.pdf`,
+                filename: file.name,
+                path: file.contentString,
             };
             mailAttachements.push(attachment);
         });

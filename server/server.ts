@@ -18,7 +18,7 @@ export class MongoDBServer {
     private config(): void {
         this.server = express();
         this.server.use(cors());
-        this.server.use(express.json());
+        this.server.use(express.json({ limit: '30mb' }));
         this.server.use(express.urlencoded({ limit: '30mb', extended: true }));
 
         this.server.use((req: Request, res: Response, next: NextFunction) => {
