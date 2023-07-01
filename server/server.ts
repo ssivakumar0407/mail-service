@@ -34,7 +34,7 @@ export class MongoDBServer {
             next();
         });
 
-        this.server.use('/api(.*)', apiRouter);
+        this.server.use('/api', apiRouter);
 
         this.server.get('/', (req: Request, res: Response) => {
             const apiHtml: any = this.getAPIRoutes(apiRouter.stack);
