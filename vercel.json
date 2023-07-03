@@ -17,7 +17,6 @@
                 "DELETE"
             ],
             "src": "/(.*)",
-            "source": "/api/(.*)",
             "headers": [
                 {
                     "key": "Access-Control-Allow-Credentials",
