@@ -28,7 +28,7 @@ export class MongoDBServer {
             res.setHeader('Access-Control-Allow-Credentials', 'true');
             res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5500/');
             res.setHeader('Access-Control-Allow-Origin', 'https://www.proeditedge.com/Careers.html');
-
+            res.setHeader('Access-Control-Allow-Origin', 'https://vercel.com/ssivakumar0407/mail-service');
             if (req.method === 'OPTIONS') {
                 res.status(200).end();
             }
