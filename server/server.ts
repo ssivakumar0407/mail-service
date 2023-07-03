@@ -17,7 +17,7 @@ export class MongoDBServer {
 
     private config(): void {
         this.server = express();
-        this.server.use(cors());
+        //this.server.use(cors());
         this.server.use(express.json({ limit: '30mb' }));
         this.server.use(express.urlencoded({ limit: '30mb', extended: true }));
 
@@ -26,15 +26,14 @@ export class MongoDBServer {
             res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
             res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
             res.setHeader('Access-Control-Allow-Credentials', 'true');
-            res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5500/');
-            res.setHeader('Access-Control-Allow-Origin', 'https://www.proeditedge.com/Careers.html');
-            res.setHeader('Access-Control-Allow-Origin', 'https://vercel.com/ssivakumar0407/mail-service');
+
             if (req.method === 'OPTIONS') {
                 res.status(200).end();
             }
 
             next();
         });
+
 
         this.server.use('/api', apiRouter);
 
@@ -45,6 +44,8 @@ export class MongoDBServer {
             res.status(200).send(html);
         });
     }
+
+
 
     private getAPIRoutes(stacks: Record<string, any>[]): string {
         const colorMapper: Record<string, string> = {
