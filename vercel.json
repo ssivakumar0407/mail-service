@@ -16,15 +16,7 @@
                 "PATCH",
                 "DELETE"
             ],
-            "src": "/(.*)"
-        }
-    ],
-    "version": 2
-}
-
-{
-    "getheaders": [
-        {
+            "src": "/(.*)",
             "source": "/api/(.*)",
             "headers": [
                 {
@@ -45,5 +37,6 @@
                 }
             ]
         }
-    ]
+    ],
+    "version": 2
 }
