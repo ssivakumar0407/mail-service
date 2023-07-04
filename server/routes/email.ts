@@ -31,7 +31,7 @@ async function emailHandler(req: Request, res: Response) {
         });
         const mailOptions: Mail.Options = {
             from: process.env.USER_EMAIL,
-            to: 's.sivakumar2022@outlook.com',
+            to: 'careers@proeditedge.com',
             subject: `ProEdit Edge: New Careers Form Submit ${req.body.name}`,
             html: `<!DOCTYPE html>
                 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
